@@ -1,5 +1,11 @@
 # Réponse
 
+![Output](/images/output.PNG)
+![Output2](/images/output2.PNG)
+![Output3](/images/output3.PNG)
+
+
+
 J'ai commencé par créer 1 pod et 1 service pour chaque container (node-redis et redis)
 
 J'essaie de connecter les 2 container en premier lieu.
