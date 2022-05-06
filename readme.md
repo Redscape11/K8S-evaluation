@@ -68,7 +68,15 @@ J'ai un service que j'ai essayé de supprimer pour nettoyer un peu mais ça n'ar
 
 
 
+## React 
+J'ai essayé de mettre en place redis-react sauf que je n'ai pas réussi à mettre en ligne mon image docker car docker hub boucle indéfiniment lorsque je crée un nouveau repository
 
+Je vous mets quand même les fichiers que j'ai utilisé pour build l'image:
+- Dockerfile
+- react-pod.yaml
+- react-service.yaml
+
+J'ai remarqué que le App.js de react pointe vers le mauvais URL, il faut le faire pointer vers l'adresse IP du cluster du service du pod node-redis qui est le backend
 
 
 

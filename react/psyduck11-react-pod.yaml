@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: psyduck11-react
+  labels:
+    purpose: psyduck11-react
+    app: psyduck11-react
+spec:
+  containers:
+    - name: psyduck11-react
+      image: imagequejenaipasreussiapushenligne:5000/react
+      imagePullPolicy: IfNotPresent
