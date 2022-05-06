@@ -7,7 +7,8 @@ J'essaie de connecter les 2 container en premier lieu.
 Utiliser des pods simple me permet de simplifier la tâche et une fois que ça marche, je produis un deployment avec la même config
 
 J'ai utilisé une commande qui me permet d'explorer le code du fichier du serveur :
-kubectl exec psyduck11-node-redis-new -- cat main.js
+
+```kubectl exec psyduck11-node-redis-new -- cat main.js```
 
 
 Au final j'ai créé :
@@ -29,6 +30,7 @@ SERVICES :
 - psyduck11-redis-new
 
 J'ai un service que j'ai essayé de supprimer pour nettoyer un peu mais ça n'arrive pas à le supprimer : 
+
 ```k delete services psyduck11-node-redis```
 
 ## redis
