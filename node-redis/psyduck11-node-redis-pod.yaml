@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: psyduck11-node-redis-new
+  labels:
+    purpose: psyduck11-node-redis-new
+    app: psyduck11-node-redis-new
+spec:
+  imagePullSecrets:
+    - name: regcred
+  containers:
+    - name: psyduck11-node-redis-new
+      image: cloud.canister.io:5000/arhturescriou/node-redis
+      imagePullPolicy: IfNotPresent
+      env:
+        - name: PORT
+          value: '3000'
+        - name: REDIS_URL
+          value: 'redis://10.3.87.136:6379'
+

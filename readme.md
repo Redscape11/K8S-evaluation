@@ -1,3 +1,78 @@
+# Réponse
+
+J'ai commencé par créer 1 pod et 1 service pour chaque container (node-redis et redis)
+
+J'essaie de connecter les 2 container en premier lieu.
+
+Utiliser des pods simple me permet de simplifier la tâche et une fois que ça marche, je produis un deployment avec la même config
+
+J'ai utilisé une commande qui me permet d'explorer le code du fichier du serveur :
+kubectl exec psyduck11-node-redis-new -- cat main.js
+
+
+Au final j'ai créé :
+- 2 pods 
+- 4 pods node-redis avec le deployment
+- 2 services
+
+
+PODS : 
+- psyduck11-node-redis-new
+- psyduck11-node-redis-new-656567bc4b-2chwl
+- psyduck11-node-redis-new-656567bc4b-4q7fq
+- psyduck11-node-redis-new-656567bc4b-7txgx
+- psyduck11-node-redis-new-656567bc4b-bvgnl
+- psyduck11-redis-new
+
+SERVICES :
+- psyduck11-node-redis-new
+- psyduck11-redis-new
+
+
+
+## redis
+### redis/psyduck11-redis-pod.yaml
+- crée 1 pod psyduck11-redis-new
+- la propriété env n'est pas nécessaire, j'ai oublié de l'enlever
+- il se base sur l'image redis, kubectl va directement pull cette image depuis le hub en ligne
+
+### redis/psyduck11-redis-service.yaml
+- crée 1 service psyduck-redis-new
+- redis utilise le port 6379 par défault, d'oû port et targetPort sont à 6379
+
+
+## node-redis
+### redis/psyduck11-node-redis-pod.yaml
+- crée 1 pod psyduck11-node-redis-new
+- env.PORT=3000 permet de définir le port du serveur express
+- env.REDIS_URL permet de dire à l'app que redis se trouve à cette URL
+- l'adresse IP choisie est le Cluster-IP du service de redis
+
+### redis/psyduck11-node-redis-service.yaml
+- crée un service psyduck11-node-redis-new
+- comme notre container utilise le port 3000, alors on map le port interne à 3000, on décide aussi de mettre le port 3000 pour le port externe au service
+
+### redis/psyduck11-node-redis-deployment.yaml
+- crée 4 pods psyduck11-node-redis-new
+- config similaire au redis/psyduck11-node-redis-pod.yaml
+
+
+
+
+
+
+
+
+Ensuite j'ai créé 1 service appelé psyduck11-redis-new avec redis/psyduck11-redis-service.yaml
+
+Dans le fichier redis-pod.yaml, j'ai oublié d'enlever les variables d'env, elles ne servent pas pour redis
+
+- node-redis
+J'ai fait pareil pour node-redis 
+
+
+
+
 # Examen
 
 ## Prérequis

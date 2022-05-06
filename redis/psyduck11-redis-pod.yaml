@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: psyduck11-redis-new
+  labels:
+    purpose: psyduck11-redis-new
+    app: psyduck11-redis-new
+spec:
+  containers:
+    - name: psyduck11-redis-new
+      image: redis
+      imagePullPolicy: IfNotPresent
+      env:
+        - name: PORT
+          value: '6379'
