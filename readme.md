@@ -28,7 +28,8 @@ SERVICES :
 - psyduck11-node-redis-new
 - psyduck11-redis-new
 
-
+J'ai un service que j'ai essayé de supprimer pour nettoyer un peu mais ça n'arrive pas à le supprimer : 
+```k delete services psyduck11-node-redis```
 
 ## redis
 ### redis/psyduck11-redis-pod.yaml
